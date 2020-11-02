@@ -1,5 +1,6 @@
 package com.gojek.parkinglot.dao;
 
+import com.gojek.parkinglot.model.ParkingSpot;
 import com.gojek.parkinglot.model.Vehicle;
 
 import java.util.List;
@@ -11,7 +12,7 @@ public interface ParkingDataAccessor {
 
 	boolean leaveVehicle(int slotNumber);
 
-	Map<Integer, Vehicle> getSlotVehicleMapping();
+	Map<Integer, ParkingSpot> getSlotVehicleMapping();
 
 	List<String> getRegNumberForColor(String color);
 
