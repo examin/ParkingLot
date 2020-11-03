@@ -4,6 +4,17 @@ plugins {
 
 group 'com.gojek'
 version '1.0-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+task fatJar(type: Jar) {
+    manifest {
+        attributes 'Implementation-Title': 'GjParkingLot',
+                'Implementation-Version': 0.1,
+                'Main-Class': 'com.gojek.parkinglot.ParkingLot'
+    }
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
 
 repositories {
     mavenCentral()

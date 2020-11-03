@@ -16,6 +16,7 @@ public class ParkingDataAccessorImpl implements ParkingDataAccessor {
 	private int parkingCapacity;
 	private ParkingStrategy parkingStrategy;
 	private Map<Integer, ParkingSpot> slotVehicleMapping;
+	private Map<Integer, String> slotRegNumberMapping;
 
 	private ParkingDataAccessorImpl(int capacity, ParkingStrategy parkingStrategy) throws ParkingException {
 		if (Objects.isNull(parkingStrategy)) {
@@ -24,6 +25,7 @@ public class ParkingDataAccessorImpl implements ParkingDataAccessor {
 		this.parkingCapacity = capacity;
 		this.parkingStrategy = parkingStrategy;
 		this.slotVehicleMapping = new HashMap<>();
+		this.slotRegNumberMapping = new HashMap<>();
 		for (int i = 1; i <= capacity; i++) {
 			parkingStrategy.addEmptySlot(i);
 		}
@@ -47,11 +49,12 @@ public class ParkingDataAccessorImpl implements ParkingDataAccessor {
 		if (parkingStrategy.getEmptySlot() == 0) {
 			return Constants.NOT_AVAILABLE;
 		}
-		if (slotVehicleMapping.containsValue(vehicle)) {
+		if (slotRegNumberMapping.containsValue(vehicle.getRegNumber())) {
 			return Constants.VEHICLE_ALREADY_EXIST;
 		}
 		availableSlot = parkingStrategy.getEmptySlot();
 		slotVehicleMapping.put(availableSlot, new ParkingSpot(availableSlot, vehicle));
+		slotRegNumberMapping.put(availableSlot,vehicle.getRegNumber());
 		parkingStrategy.removeEmptySlot(availableSlot);
 
 		return availableSlot;
