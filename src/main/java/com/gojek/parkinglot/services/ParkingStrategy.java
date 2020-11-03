@@ -5,11 +5,11 @@ package com.gojek.parkinglot.services;
  */
 public interface ParkingStrategy {
 
-    void addEmptySlot(int slotNumber);
+	void addEmptySlot(int slotNumber);
 
-    int getEmptySlot();
+	int getEmptySlot();
 
-    void removeEmptySlot(int slotNumber);
+	void removeEmptySlot(int slotNumber);
 
-    boolean isSlotAvailable(int slotNumber);
+	boolean isSlotAvailable(int slotNumber);
 }

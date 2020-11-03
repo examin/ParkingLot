@@ -8,7 +8,7 @@ public enum ErrorCodes {
 	PROCESSING_ERROR("Processing Error "),
 	INVALID_REQUEST("Invalid Request");
 
-	private String message ;
+	private final String message;
 
 	ErrorCodes(String message) {
 		this.message = message;

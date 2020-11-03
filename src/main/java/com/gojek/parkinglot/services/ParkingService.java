@@ -10,19 +10,19 @@ import java.util.Optional;
 
 public interface ParkingService {
 
-    void createParkingLot(int capacity) throws ParkingException;
+	void createParkingLot(int capacity) throws ParkingException;
 
-    Optional<Integer> park(Vehicle vehicle) throws ParkingException;
+	Optional<Integer> park(Vehicle vehicle) throws ParkingException;
 
-    void leave(int slotNumber) throws ParkingException;
+	void leave(int slotNumber) throws ParkingException;
 
-    Map<Integer, ParkingSpot> getParkingStatus() throws ParkingException;
+	Map<Integer, ParkingSpot> getParkingStatus() throws ParkingException;
 
-    List<String> getRegNumberForColor(String color) throws ParkingException;
+	List<String> getRegNumberForColor(String color) throws ParkingException;
 
-    List<Integer> getSlotNumbersFromColor(String color) throws ParkingException;
+	List<Integer> getSlotNumbersFromColor(String color) throws ParkingException;
 
-    int getSlotNoFromRegistrationNo(String registrationNo) throws ParkingException;
+	int getSlotNoFromRegistrationNo(String registrationNo) throws ParkingException;
 
-    void doCleanup();
+	void doCleanup();
 }
